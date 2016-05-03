@@ -97,6 +97,14 @@ func SetLogLevel(name, level string) error {
 	return nil
 }
 
+func GetSubsystemNames() []string {
+	names := make([]string, 0, len(loggers))
+	for k := range loggers {
+		names = append(names, k)
+	}
+	return names
+}
+
 func getLogger(name string) *logging.Logger {
 	log := logging.MustGetLogger(name)
 	log.ExtraCalldepth = 1
